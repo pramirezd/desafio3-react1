@@ -4,11 +4,12 @@ const Listado = ({ dataFile, setDataFile, dataFileFilter, setDataFileFilter }) =
 
   function deleteEmployee(id) {
     
-    const newData = [...dataFile].filter((colaborador) => colaborador.id !== id);
+    const newData = [...dataFile].filter(
+        (colaborador) => colaborador.id !== id);
     setDataFile(newData);
 
     const newDataFilter = [...dataFileFilter].filter(
-      (colaborador) => colaborador.id !== id
+        (colaborador) => colaborador.id !== id
     );
 
     setDataFileFilter(newDataFilter);
@@ -41,7 +42,7 @@ const Listado = ({ dataFile, setDataFile, dataFileFilter, setDataFileFilter }) =
             <th>Edad</th>
             <th>Cargo</th>
             <th>Telefono</th>
-            <th>Quitar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>{colaboradores}</tbody>
