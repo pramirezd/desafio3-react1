@@ -23,7 +23,8 @@ const Listado = ({ dataFile, setDataFile, dataFileFilter, setDataFileFilter }) =
       <td>{colaborador.telefono}</td>
       <td>
         <i
-          className="fa-solid fa-trash-can"
+          className="fa-solid fa-user-xmark"
+          id='delete'
           onClick={() => deleteEmployee(colaborador.id)}
         ></i>
       </td>
@@ -31,7 +32,7 @@ const Listado = ({ dataFile, setDataFile, dataFileFilter, setDataFileFilter }) =
   ));
 
   return (
-    <div className="table-responsive col-12 col-lg-8 mb-2">
+    <div className="table-responsive col-12 col-lg-9 mb-2">
       <table className="table table-striped table-bordered border-secondary text-center">
         <thead>
           <tr>
@@ -40,7 +41,7 @@ const Listado = ({ dataFile, setDataFile, dataFileFilter, setDataFileFilter }) =
             <th>Edad</th>
             <th>Cargo</th>
             <th>Telefono</th>
-            <th>Borrar</th>
+            <th>Quitar</th>
           </tr>
         </thead>
         <tbody>{colaboradores}</tbody>

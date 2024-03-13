@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Formulario = ({ addAlert, dataFile, setDataFile, dataFileFilter, setDataFileFilter }) => {
-  const [employeeData, setEmployeeData] = useState({
+  
+    const [employeeData, setEmployeeData] = useState({
     nombre: '',
     correo: '',
     edad: '',
@@ -36,13 +37,14 @@ const Formulario = ({ addAlert, dataFile, setDataFile, dataFileFilter, setDataFi
     const isValidEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     const isValidPhone = /^[0-9]{9}$/;
 
-    if (
+    const validateData =    
         employeeData.nombre.trim() === '' ||
         employeeData.correo === '' ||
         employeeData.edad === '' ||
         employeeData.cargo.trim() === '' ||
-        employeeData.telefono === ''
-    ) {
+        employeeData.telefono === '';
+
+    if (validateData) {
       addAlert({
         alertText: 'Completa todos los campos!',
         alertCase: 'alert-danger',
@@ -84,22 +86,11 @@ const Formulario = ({ addAlert, dataFile, setDataFile, dataFileFilter, setDataFi
     }
   }
 
-  useEffect(() => {
-    setEmployeeData({
-      nombre: '',
-      correo: '',
-
-      edad: '',
-      cargo: '',
-      telefono: '',
-    });
-  }, [dataFile]);
-
   return (
-    <div className="formulario col-12 col-lg-4">
+    <div className="col-12 col-lg-3">
       <h3>Agregar Colaborador</h3>
 
-      <form noValidate onSubmit={(event) => addEmployee(event)}>
+      <form onSubmit={(event) => addEmployee(event)}>
         <div className="mb-2">
           <input
             onChange={(event) => handlerInputs(event)}

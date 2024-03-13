@@ -17,7 +17,7 @@ const Buscador = ({ dataFile, dataFileFilter }) => {
   }
 
   return (
-    <div className="buscador col-12 col-md-6">
+    <div className="col-12 col-md-6 m-3">
       <input
         type="text"
         name="buscador"
