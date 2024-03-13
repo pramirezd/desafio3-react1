@@ -1,33 +1,52 @@
-import React from 'react'
-import { BaseColaboradores } from '../../BaseColaboradores'
+import React from 'react';
 
-const Listado = () => {
-    return (
-        <div className="table-responsive m-3">
-            <table class="table table-striped align-middle text-center table-bordered border-secondary">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Edad</th>
-                    <th scope="col">Cargo</th>
-                    <th scope="col">Telefono</th>
-                </tr>
-            </thead>
-            <tbody>
-                {BaseColaboradores.map((colaborador) => (
-                    <tr>
-                        <td>{colaborador.nombre}</td>
-                        <td>{colaborador.correo}</td>
-                        <td>{colaborador.edad}</td>
-                        <td>{colaborador.cargo}</td>
-                        <td>{colaborador.telefono}</td>
-                    </tr>
-                ))}
-            </tbody>
-            </table>
-        </div>
-    )
+const Listado = ({ dataFile, setDataFile, dataFileFilter, setDataFileFilter }) => {
+
+  function deleteEmployee(id) {
+    
+    const newData = [...dataFile].filter((colaborador) => colaborador.id !== id);
+    setDataFile(newData);
+
+    const newDataFilter = [...dataFileFilter].filter(
+      (colaborador) => colaborador.id !== id
+    );
+
+    setDataFileFilter(newDataFilter);
+  }
+
+  const colaboradores = dataFileFilter.map((colaborador) => (
+    <tr key={colaborador.id}>
+      <td>{colaborador.nombre}</td>
+      <td>{colaborador.correo}</td>
+      <td>{colaborador.edad}</td>
+      <td>{colaborador.cargo}</td>
+      <td>{colaborador.telefono}</td>
+      <td>
+        <i
+          className="fa-solid fa-trash-can"
+          onClick={() => deleteEmployee(colaborador.id)}
+        ></i>
+      </td>
+    </tr>
+  ));
+
+  return (
+    <div className="table-responsive col-12 col-lg-8 mb-2">
+      <table className="table table-striped table-bordered border-secondary text-center">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Edad</th>
+            <th>Cargo</th>
+            <th>Telefono</th>
+            <th>Borrar</th>
+          </tr>
+        </thead>
+        <tbody>{colaboradores}</tbody>
+      </table>
+    </div>
+  );
 }
 
 export default Listado
