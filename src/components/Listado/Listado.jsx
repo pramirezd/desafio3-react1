@@ -32,8 +32,8 @@ const Listado = ({ dataFile, setDataFile, dataFileFilter, setDataFileFilter }) =
   ));
 
   return (
-    <div className="table-responsive col-12 col-lg-9 mb-2">
-      <table className="table table-striped table-bordered border-secondary text-center">
+    <div className="col-12 col-lg-9 mb-2">
+      <table className="table table-responsive table-striped table-hover table-bordered border-secondary text-center">
         <thead>
           <tr>
             <th>Nombre</th>

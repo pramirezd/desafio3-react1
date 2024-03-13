@@ -12,23 +12,35 @@ const Formulario = ({ addAlert, dataFile, setDataFile, dataFileFilter, setDataFi
   });
 
   function handlerInputs(event) {
-    if (event.target.id === 'inputNombre') {
-        setEmployeeData({ ...employeeData, nombre: event.target.value });
+
+    const inputNombre = event.target.id === 'inputNombre';
+    const inputEmail = event.target.id === 'inputEmail';
+    const inputEdad = event.target.id === 'inputEdad';
+    const inputCargo = event.target.id === 'inputCargo';
+    const inputTelefono = event.target.id === 'inputTelefono';
+
+    switch(true) {
+        case inputNombre:
+            setEmployeeData({ ...employeeData, nombre: event.target.value });
+        break;
+
+        case inputEmail:
+            setEmployeeData({ ...employeeData, correo: event.target.value });
+        break;
+
+        case inputEdad:
+            setEmployeeData({ ...employeeData, edad: event.target.value });
+        break;
+
+        case inputCargo:
+            setEmployeeData({ ...employeeData, cargo: event.target.value });
+        break;
+
+        case inputTelefono:
+            setEmployeeData({ ...employeeData, telefono: event.target.value });
+        break;
     }
 
-    if (event.target.id === 'inputEmail') {
-        setEmployeeData({ ...employeeData, correo: event.target.value });
-    }
-
-    if (event.target.id === 'inputEdad') {
-        setEmployeeData({ ...employeeData, edad: event.target.value });
-    }
-    if (event.target.id === 'inputCargo') {
-        setEmployeeData({ ...employeeData, cargo: event.target.value });
-    }
-    if (event.target.id === 'inputTelefono') {
-        setEmployeeData({ ...employeeData, telefono: event.target.value });
-    }
   }
 
   function addEmployee(event) {
@@ -44,46 +56,57 @@ const Formulario = ({ addAlert, dataFile, setDataFile, dataFileFilter, setDataFi
         employeeData.cargo.trim() === '' ||
         employeeData.telefono === '';
 
-    if (validateData) {
-      addAlert({
-        alertText: 'Completa todos los campos!',
-        alertCase: 'alert-danger',
-        alertStatus: true,
-      });
-    } else if (!isValidEmail.test(employeeData.correo)) {
-      addAlert({
-        alertText: 'Formato de email incorrecto',
-        alertCase: 'alert-danger',
-        alertStatus: true,
-      });
-    } else if (!isValidPhone.test(employeeData.telefono)) {
-      addAlert({
-        alertText: 'El teléfono debe contar con 9 dígitos',
-        alertCase: 'alert-danger',
-        alertStatus: true,
-      });
-    } else {
-      addAlert({
-        alertText: 'Colaborador añadido exitosamente',
-        alertCase: 'alert-success',
-        alertStatus: true,
-      });
+    const validateEmail = !isValidEmail.test(employeeData.correo);
 
-      const newId = dataFile.length
-        ? (parseInt(dataFile[dataFile.length - 1].id) + 1).toString()
-        : '0';
+    const validatePhone = !isValidPhone.test(employeeData.telefono);
 
-      setDataFile([...dataFile, { ...employeeData, id: newId }]);
-      setDataFileFilter([...dataFileFilter, { ...employeeData, id: newId }]);
+    switch(true) {
 
-      setEmployeeData({
-        nombre: '',
-        correo: '',
-        edad: '',
-        cargo: '',
-        telefono: '',
-      });
+        case validateData:
+            addAlert({
+                alertText: 'Completa todos los campos!',
+                alertCase: 'alert-danger',
+                alertStatus: true,
+            });
+        break;
+            
+        case validateEmail:
+            addAlert({
+                alertText: 'Completa todos los campos!',
+                alertCase: 'alert-danger',
+                alertStatus: true,
+            });
+        break;
+
+        case validatePhone:
+            addAlert({
+                alertText: 'El teléfono debe contar con 9 dígitos',
+                alertCase: 'alert-danger',
+                alertStatus: true,
+            });
+        break;
+
+        default:
+            addAlert({
+                alertText: 'Colaborador añadido exitosamente',
+                alertCase: 'alert-success',
+                alertStatus: true,
+            });
+
+            const newId = dataFile.length ? (parseInt(dataFile[dataFile.length - 1].id) + 1).toString() : '0';
+
+            setDataFile([...dataFile, { ...employeeData, id: newId }]);
+            setDataFileFilter([...dataFileFilter, { ...employeeData, id: newId }]);
+
+            setEmployeeData({
+                nombre: '',
+                correo: '',
+                edad: '',
+                cargo: '',
+                telefono: '',
+            });
     }
+
   }
 
   return (
