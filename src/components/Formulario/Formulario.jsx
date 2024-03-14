@@ -22,22 +22,47 @@ const Formulario = ({ addAlert, dataFile, setDataFile, dataFileFilter, setDataFi
     switch(true) {
         case inputNombre:
             setEmployeeData({ ...employeeData, nombre: event.target.value });
+            addAlert({
+              alertText: '',
+              alertCase: '',
+              alertStatus: false,
+            });
         break;
 
         case inputEmail:
             setEmployeeData({ ...employeeData, correo: event.target.value });
+            addAlert({
+              alertText: '',
+              alertCase: '',
+              alertStatus: false,
+            });
         break;
 
         case inputEdad:
             setEmployeeData({ ...employeeData, edad: event.target.value });
+            addAlert({
+              alertText: '',
+              alertCase: '',
+              alertStatus: false,
+            });
         break;
 
         case inputCargo:
             setEmployeeData({ ...employeeData, cargo: event.target.value });
+            addAlert({
+              alertText: '',
+              alertCase: '',
+              alertStatus: false,
+            });
         break;
 
         case inputTelefono:
             setEmployeeData({ ...employeeData, telefono: event.target.value });
+            addAlert({
+              alertText: '',
+              alertCase: '',
+              alertStatus: false,
+            });
         break;
     }
 
@@ -104,6 +129,7 @@ const Formulario = ({ addAlert, dataFile, setDataFile, dataFileFilter, setDataFi
                 cargo: '',
                 telefono: '',
             });
+
     }
 
   }
