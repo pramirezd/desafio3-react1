@@ -94,8 +94,8 @@ const Formulario = ({ addAlert, dataFile, setDataFile, dataFileFilter, setDataFi
 
             const newId = dataFile.length ? (parseInt(dataFile[dataFile.length - 1].id) + 1).toString() : '0';
 
-            setDataFile([...dataFile, { ...employeeData, id: newId }]);
-            setDataFileFilter([...dataFileFilter, { ...employeeData, id: newId }]);
+            setDataFile([...dataFile, { id: newId, ...employeeData }]);
+            setDataFileFilter([...dataFileFilter, { id: newId, ...employeeData }]);
 
             setEmployeeData({
                 nombre: '',
