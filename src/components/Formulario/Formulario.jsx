@@ -57,7 +57,6 @@ const Formulario = ({ addAlert, dataFile, setDataFile, dataFileFilter, setDataFi
         employeeData.telefono === '';
 
     const validateEmail = !isValidEmail.test(employeeData.correo);
-
     const validatePhone = !isValidPhone.test(employeeData.telefono);
 
     switch(true) {
@@ -72,7 +71,7 @@ const Formulario = ({ addAlert, dataFile, setDataFile, dataFileFilter, setDataFi
             
         case validateEmail:
             addAlert({
-                alertText: 'Completa todos los campos!',
+                alertText: 'Formato de email incorrecto',
                 alertCase: 'alert-danger',
                 alertStatus: true,
             });
@@ -116,57 +115,56 @@ const Formulario = ({ addAlert, dataFile, setDataFile, dataFileFilter, setDataFi
       <form onSubmit={(event) => addEmployee(event)}>
         <div className="mb-2">
           <input
-            onChange={(event) => handlerInputs(event)}
-            value={employeeData.nombre}
             type="text"
             className="form-control"
             id="inputNombre"
             placeholder="Nombre del colaborador"
+            onChange={(event) => handlerInputs(event)}
+            value={employeeData.nombre}
           />
         </div>
 
         <div className="mb-2">
           <input
-            onChange={(event) => handlerInputs(event)}
-            value={employeeData.correo}
             type="email"
             className="form-control"
             id="inputEmail"
             placeholder="Email del colaborador"
-            pattern=".*"
+            onChange={(event) => handlerInputs(event)}
+            value={employeeData.correo}
           />
         </div>
 
         <div className="mb-2">
           <input
-            onChange={(event) => handlerInputs(event)}
-            value={employeeData.edad}
             type="number"
             className="form-control"
             id="inputEdad"
             placeholder="Edad del colaborador"
+            onChange={(event) => handlerInputs(event)}
+            value={employeeData.edad}
           />
         </div>
 
         <div className="mb-2">
           <input
-            onChange={(event) => handlerInputs(event)}
-            value={employeeData.cargo}
             type="text"
             className="form-control"
             id="inputCargo"
             placeholder="Cargo del colaborador"
+            onChange={(event) => handlerInputs(event)}
+            value={employeeData.cargo}
           />
         </div>
 
         <div className="mb-2">
           <input
-            onChange={(event) => handlerInputs(event)}
-            value={employeeData.telefono}
             type="text"
             className="form-control"
             id="inputTelefono"
             placeholder="Teléfono del colaborador"
+            onChange={(event) => handlerInputs(event)}
+            value={employeeData.telefono}
           />
         </div>
 
