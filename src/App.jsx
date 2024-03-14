@@ -43,7 +43,10 @@ function App() {
           dataFileFilter={employeeFilter}
           setDataFileFilter={setemployeeFilter}
         />
-        <Alert className="alert" alerta={alert} />
+        <Alert 
+          className="alert" 
+          alerta={alert}
+        />
       </div>
     </>
   );
